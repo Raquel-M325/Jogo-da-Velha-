@@ -313,6 +313,42 @@ j loop_teste
 
 
 #-------------------------------------------------------------------------------------------------------------------------------------------
+vitoria_jogador1_teste:
+# Endereço inicial da tela
+la $9, vitoria_jogador1
+lui  $8, 0x1001          # Base da tela 0x10010000
+addi $8, $8,      # começa a linha , coluna 
+addi $10, $0, 1431       # Total de pixels (53 * 27)
+add $11, $0, $0
+
+addi $15, $0, 53         # Largura do "bitmap"
+add  $14, $0, $0         # Contador de coluna
+
+
+loop_teste:
+beq $10, $11, pausa_3
+
+lw $12, 0($9)
+sw $12, 0($8) 
+
+addi $9, $9, 4
+addi $8, $8, 4         
+
+addi $14, $14, 1
+addi $11, $11, 1
+
+beq  $14, $15, pula_linha_teste
+j loop_teste
+
+
+pula_linha_teste:
+add $14, $0, $0
+addi $8, $8, 300 #(128 - 53) * 4 
+j loop_teste
+
+
+
+#--------------------------------------------------------------------------------------------------------------------------------------------
 pausa_3:
 
 addi $2, $0, 32
@@ -426,6 +462,14 @@ fim_funcao:
 jr $31
 
 .data 0x10018004
+
+vitoria_jogador1:
+
+.word 
+
+vitoria_jogador2:
+
+.word
 
 empate: 
 
