@@ -6,6 +6,7 @@ ori $9, $0, 0x00ceb695
  
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#No arquivo TICtacToe_VF possui as notas musicais e atualização, porém não está com as modificações do teste_empate, ou seja, não tem o codigo empate
 
 # Desenha o contorno superior e inferior do quadro
 lui $8, 0x1001 # Contorno superior
