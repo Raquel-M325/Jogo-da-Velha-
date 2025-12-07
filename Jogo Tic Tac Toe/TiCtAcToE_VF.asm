@@ -738,9 +738,6 @@ addi $5, $0,   #duração
 addi $2, $0, 31 #som
 syscall 
 
-addi $4, $0, #duração
-addi $2, $0, 32 #pausa
-syscall
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 toca_empate:
@@ -799,18 +796,42 @@ addi $2, $0, 32 #pausa
 syscall
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------
-toca_inicial:
+toca_inicial: #o cenario dura 4 segundos - 4000 ms
 addi $6, $0, 0 #PIANO
 
-#
-addi $4, $0,  #nota
-addi $5, $0,   #duração
+#DÓ
+addi $4, $0, 72 #nota
+addi $5, $0, 400  #duração
+addi $2, $0, 31 #som
+syscall
+
+#RÉ
+addi $4, $0, 62 #nota
+addi $5, $0, 400 #duração
 addi $2, $0, 31 #som
 syscall 
 
-addi $4, $0, #duração
+addi $4, $0, 400 #duração
 addi $2, $0, 32 #pausa
 syscall
+
+#MI
+addi $4, $0, 64 #nota
+addi $5, $0, 400 #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 400 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+#FÁ
+addi $4, $0, 65 #nota
+addi $5, $0, 2000 #duração
+addi $2, $0, 31 #som
+syscall 
+
+jr $31
 
 # <---------------------------------------------------------------------------------------------------------------------------------->
 
