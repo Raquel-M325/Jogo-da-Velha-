@@ -803,61 +803,61 @@ addi $6, $0, 0 #PIANO
 addi $7, $0, 127
 
     # DÓ
-    addi $4, $0, 72   # Nota
-    addi $5, $0, 600  # Duração da nota
-    addi $2, $0, 31   # Tipo: som
-    syscall
+        addi $4, $0, 72   # Nota
+            addi $5, $0, 600  # Duração da nota
+                addi $2, $0, 31   # Tipo: som
+                    syscall
 
-    # Pausa após DÓ
-    addi $5, $0, 150  # Duração da pausa
-    addi $2, $0, 32   # Tipo: pausa
-    syscall
+                        # Pausa após DÓ
+                            addi $5, $0, 150  # Duração da pausa
+                                addi $2, $0, 32   # Tipo: pausa
+                                    syscall
 
-    # RÉ
-    addi $4, $0, 62
-    addi $5, $0, 600
-    addi $2, $0, 31
-    syscall
+                                        # RÉ
+                                            addi $4, $0, 62
+                                                addi $5, $0, 600
+                                                    addi $2, $0, 31
+                                                        syscall
 
-    # Pausa após RÉ
-    addi $5, $0, 150
-    addi $2, $0, 32
-    syscall
+                                                            # Pausa após RÉ
+                                                                addi $5, $0, 150
+                                                                    addi $2, $0, 32
+                                                                        syscall
 
-    # MI
-    addi $4, $0, 64
-    addi $5, $0, 600
-    addi $2, $0, 31
-    syscall
+                                                                            # MI
+                                                                                addi $4, $0, 64
+                                                                                    addi $5, $0, 600
+                                                                                        addi $2, $0, 31
+                                                                                            syscall
 
-    # Pausa após MI
-    addi $5, $0, 150
-    addi $2, $0, 32
-    syscall
+                                                                                                # Pausa após MI
+                                                                                                    addi $5, $0, 150
+                                                                                                        addi $2, $0, 32
+                                                                                                            syscall
 
-    # FÁ
-    addi $4, $0, 65
-    addi $5, $0, 600
-    addi $2, $0, 31
-    syscall
+                                                                                                                # FÁ
+                                                                                                                    addi $4, $0, 65
+                                                                                                                        addi $5, $0, 600
+                                                                                                                            addi $2, $0, 31
+                                                                                                                                syscall
 
-    # Pausa após FÁ
-    addi $5, $0, 150
-    addi $2, $0, 32
-    syscall
+                                                                                                                                    # Pausa após FÁ
+                                                                                                                                        addi $5, $0, 150
+                                                                                                                                            addi $2, $0, 32
+                                                                                                                                                syscall
 
-    # SOL (última nota, mais longa)
-    addi $4, $0, 67
-    addi $5, $0, 900
-    addi $2, $0, 31
-    syscall
+                                                                                                                                                    # SOL (última nota, mais longa)
+                                                                                                                                                        addi $4, $0, 67
+                                                                                                                                                            addi $5, $0, 900
+                                                                                                                                                                addi $2, $0, 31
+                                                                                                                                                                    syscall
 
-    # Pausa final
-    addi $5, $0, 150
-    addi $2, $0, 32
-    syscall
- 
-    jr $31
+                                                                                                                                                                        # Pausa final
+                                                                                                                                                                            addi $5, $0, 150
+                                                                                                                                                                                addi $2, $0, 32
+                                                                                                                                                                                    syscall
+                                                                                                                                                                                     
+                                                                                                                                                                                         jr $31
 
 # <---------------------------------------------------------------------------------------------------------------------------------->
 

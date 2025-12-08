@@ -111,6 +111,7 @@ j loop_quadro
 # Desenha Titulo Inicial 
 
 Titulo_Inicial:
+jal toca_inicial
 
 la $9, titulo
 lui $8, 0x1001
@@ -464,6 +465,7 @@ j loop_PRINCIPAL
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Empate:
+jal toca_empate
 
 addi $2, $0, 32
 addi $4, $0, 3000
@@ -1141,6 +1143,205 @@ addi $10, $10, 1
 j for_LATERAIS
 fim_O:
 jr $31
+
+#----------------------------------------------------------------------------------------------------------
+
+#============== MÚSICAS ===========================================
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+toca_durante_jogo:
+addi $6, $0, 0 #PIANO
+addi $7, $0, 127 #volume
+
+#
+addi $4, $0,  #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+jr $31
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+toca_empate: #tempo é 2 segundos = 2000 ms, falta testar!
+addi $6, $0, 40 #CORDAS
+addi $7, $0, 127 #volume 
+
+#MI
+addi $4, $0, 64 #nota
+addi $5, $0, 450  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 100 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+#MIb
+addi $4, $0, 63 #nota
+addi $5, $0, 450  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 100 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+#RÉ
+addi $4, $0, 62 #nota
+addi $5, $0, 900 #duração
+addi $2, $0, 31 #som
+syscall 
+
+
+jr $31
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+toca_vitoria:
+addi $6, $0, 56 #METAIS
+addi $7, $0, 127 #volume
+
+#MI
+addi $4, $0, 64 #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, #duração
+addi $2, $0, 32 #pausa
+syscall
+
+#FÁ
+addi $4, $0, 65 #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, #duração
+addi $2, $0, 32 #pausa
+syscall
+
+#SOL 3 VEZES
+addi $4, $0, 67 #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 67 #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 67 #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+
+jr $31
+    
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+toca_selecionado_O_X:
+addi $6, $0, 8 #VIBRAFONE
+addi $7, $0, 127 #volume
+
+#
+addi $4, $0,  #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, #duração
+addi $2, $0, 32 #pausa
+syscall
+
+jr $31
+    
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+toca_sorteio:
+addi $6, $0, 112 #BATERIA
+addi $7, $0, 127 #volume
+
+#
+addi $4, $0,  #nota
+addi $5, $0,   #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, #duração
+addi $2, $0, 32 #pausa
+syscall
+
+jr $31
+
+#------------------------------------------------------------------------------------------------------------------------------------------------------
+toca_inicial: #o cenario dura 4 segundos - 4000 ms
+addi $6, $0, 0 #PIANO
+addi $7, $0, 127
+
+    # DÓ
+    addi $4, $0, 72   # Nota
+    addi $5, $0, 600  # Duração da nota
+    addi $2, $0, 31   # Tipo: som
+    syscall
+
+    # Pausa após DÓ
+    addi $5, $0, 150  # Duração da pausa
+    addi $2, $0, 32   # Tipo: pausa
+    syscall
+
+    # RÉ
+    addi $4, $0, 62
+    addi $5, $0, 600
+    addi $2, $0, 31
+    syscall
+
+    # Pausa após RÉ
+    addi $5, $0, 150
+    addi $2, $0, 32
+    syscall
+
+    # MI
+    addi $4, $0, 64
+    addi $5, $0, 600
+    addi $2, $0, 31
+    syscall
+
+    # Pausa após MI
+    addi $5, $0, 150
+    addi $2, $0, 32
+    syscall
+
+    # FÁ
+    addi $4, $0, 65
+    addi $5, $0, 600
+    addi $2, $0, 31
+    syscall
+
+    # Pausa após FÁ
+    addi $5, $0, 150
+    addi $2, $0, 32
+    syscall
+
+    # SOL (última nota, mais longa)
+    addi $4, $0, 67
+    addi $5, $0, 900
+    addi $2, $0, 31
+    syscall
+
+    # Pausa final
+    addi $5, $0, 150
+    addi $2, $0, 32
+    syscall
+ 
+    jr $31
+
 
 # <---------------------------------------------------------------------------------------------------------------------------------->
 
