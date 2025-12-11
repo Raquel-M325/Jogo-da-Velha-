@@ -421,6 +421,8 @@ j loop_LV_grade
 # Loop Principal do jogo
 Jogo:
 
+addi $1, $0, 1 #jogo ativo
+
 lui $13, 0xffff
 addi $20, $0, 8
 loop_PRINCIPAL:
@@ -565,6 +567,7 @@ j loop_JV2
 
 fim:
 syscall
+addi $1, $0, 0 #jogo acabou
 addi $2, $0, 10
 syscall
 
@@ -701,6 +704,9 @@ lui $4, 0x1001
 addi $4, $4, 7344
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X #se não der, é só apagar e juntar
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -712,6 +718,10 @@ lui $4, 0x1001
 addi $4, $4, 4784
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -726,11 +736,15 @@ lw $25, 0($19)
 beq $25, 1, Xis_2
 beq $25, 2, Ohhh_2
 addi $20, $20, -1
+
 Xis_2:
 lui $4, 0x1001
 addi $4, $4, 7420
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -742,6 +756,9 @@ lui $4, 0x1001
 addi $4, $4, 4860
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -761,6 +778,9 @@ lui $4, 0x1001
 addi $4, $4, 7500
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -772,6 +792,9 @@ lui $4, 0x1001
 addi $4, $4, 4940
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -791,6 +814,9 @@ lui $4, 0x1001
 addi $4, $4, 16048
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -802,6 +828,9 @@ lui $4, 0x1001
 addi $4, $4, 13488
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -821,6 +850,9 @@ lui $4, 0x1001
 addi $4, $4, 16128
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -832,6 +864,9 @@ lui $4, 0x1001
 addi $4, $4, 13568
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -851,6 +886,9 @@ lui $4, 0x1001
 addi $4, $4, 16204
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -862,6 +900,9 @@ lui $4, 0x1001
 addi $4, $4, 13644
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -881,6 +922,9 @@ lui $4, 0x1001
 addi $4, $4, 24752
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -892,6 +936,9 @@ lui $4, 0x1001
 addi $4, $4, 21676
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -911,6 +958,9 @@ lui $4, 0x1001
 addi $4, $4, 24828
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -922,6 +972,9 @@ lui $4, 0x1001
 addi $4, $4, 21756
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -941,6 +994,9 @@ lui $4, 0x1001
 addi $4, $4, 24908
 ori $5, $0, 0x00f00303
 jal Desenha_X_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, 4
 la $16, Estado_Atual
 li $18, 1
@@ -952,6 +1008,9 @@ lui $4, 0x1001
 addi $4, $4, 22348
 ori $5, $0, 0x0000b7ef
 jal Desenha_O_FUNC
+
+jal toca_selecionado_O_X
+
 addi $19, $19, -4
 la $16, Estado_Atual
 li $18, 2
@@ -1156,15 +1215,43 @@ jr $31
 #============== MÚSICAS ===========================================
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 toca_durante_jogo:
+beq $1, $0, fim_de_jogo
+
 addi $6, $0, 0 #PIANO
 addi $7, $0, 127 #volume
 
-#
-addi $4, $0,  #nota
-addi $5, $0,   #duração
-addi $2, $0, 31 #som
-syscall 
+# SIb
+addi $4, $0, 70    # nota
+addi $5, $0, 300   # duração 300 ms
+addi $2, $0, 31    # som
+syscall
 
+# pausa 100 ms
+addi $4, $0, 100
+addi $2, $0, 32
+syscall
+
+# SI
+addi $4, $0, 71    # nota
+addi $5, $0, 300   # duração 300 ms
+addi $2, $0, 31
+syscall
+
+# pausa 100 ms
+addi $4, $0, 100
+addi $2, $0, 32
+syscall
+
+# SIb longa
+addi $4, $0, 70
+addi $5, $0, 1200  # duração maior
+addi $2, $0, 31
+syscall
+
+
+j toca_durante_jogo
+
+fim_de_jogo:
 jr $31
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1258,14 +1345,15 @@ toca_selecionado_O_X:
 addi $6, $0, 8 #VIBRAFONE
 addi $7, $0, 127 #volume
 
-#
-addi $4, $0,  #nota
-addi $5, $0,   #duração
-addi $2, $0, 31 #som
-syscall 
+#Dó
+addi $4, $0, 72   
+addi $5, $0, 150   # Duração curta, 150 ms
+addi $2, $0, 31    
+syscall
 
-addi $4, $0, #duração
-addi $2, $0, 32 #pausa
+# Pausa curta
+addi $4, $0, 100   # duração da pausa
+addi $2, $0, 32    # syscall pausa
 syscall
 
 jr $31
