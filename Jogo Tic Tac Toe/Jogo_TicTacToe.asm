@@ -179,7 +179,7 @@ j loop_nomes
 pausa_1:
 
 addi $2, $0, 32
-addi $4, $0, 2000
+addi $4, $0, 1300
 syscall
 
 addi $2, $0, 30
@@ -229,7 +229,7 @@ Copo_caiu:
 jal toca_sorteio
 
 addi $2, $0, 32
-addi $4, $0, 2500
+addi $4, $0, 1500
 syscall
 la $9, copo_caiu
 lui $8, 0x1001
@@ -429,7 +429,7 @@ loop_PRINCIPAL:
 
 jal muda_cor_grade
 lw $16, 0($13)
-beq $16, $0, loop_PRINCIPAL
+beq $16, $0, volta_loop
 
 lw $17, 4($13)
 
@@ -469,6 +469,7 @@ addi $8, $0, 2
 beq  $2, $8, Vitoria_Jog2
 beq $20, $0, Empate
 volta_loop:
+jal toca_durante_jogo
 j loop_PRINCIPAL
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -515,9 +516,7 @@ j loop_EMPATE
 
 Vitoria_Jog1:
 
-addi $2, $0, 32
-addi $4, $0, 3000
-syscall
+jal toca_vitoria
 jal limpa_fundo_quadro
 lui $8, 0x1001
 la $9, Tela_J1V
@@ -541,9 +540,7 @@ j loop_JV1
 
 Vitoria_Jog2:
 
-addi $2, $0, 32
-addi $4, $0, 3000
-syscall
+jal toca_vitoria
 jal limpa_fundo_quadro
 lui $8, 0x1001
 la $9, Tela_J2V
@@ -1215,14 +1212,13 @@ jr $31
 #============== MÚSICAS ===========================================
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 toca_durante_jogo:
-beq $1, $0, fim_de_jogo
 
 addi $6, $0, 0 #PIANO
 addi $7, $0, 127 #volume
 
 # SIb
 addi $4, $0, 70    # nota
-addi $5, $0, 300   # duração 300 ms
+addi $5, $0, 100   # duração 300 ms
 addi $2, $0, 31    # som
 syscall
 
@@ -1233,7 +1229,7 @@ syscall
 
 # SI
 addi $4, $0, 71    # nota
-addi $5, $0, 300   # duração 300 ms
+addi $5, $0, 200   # duração 300 ms
 addi $2, $0, 31
 syscall
 
@@ -1244,14 +1240,10 @@ syscall
 
 # SIb longa
 addi $4, $0, 70
-addi $5, $0, 1200  # duração maior
+addi $5, $0, 300  # duração maior
 addi $2, $0, 31
 syscall
 
-
-j toca_durante_jogo
-
-fim_de_jogo:
 jr $31
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1309,7 +1301,7 @@ addi $5, $0, 200  #duração
 addi $2, $0, 31 #som
 syscall 
 
-addi $4, $0, #duração
+addi $4, $0, 100 #duração
 addi $2, $0, 32 #pausa
 syscall
 
