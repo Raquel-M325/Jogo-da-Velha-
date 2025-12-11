@@ -191,6 +191,8 @@ jal limpa_fundo_quadro # A funcao limpa o fundo do quadro
 
 # Sorteio
 
+jal toca_sorteio
+
 la $9, copo_pe
 lui $8, 0x1001
 addi $8, $8, 6348
@@ -223,6 +225,8 @@ addi $8, $8, 320 # Pula para o inicio da proxima linha
 j loop_sorteio
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Copo_caiu:
+
+jal toca_sorteio
 
 addi $2, $0, 32
 addi $4, $0, 2500
@@ -280,7 +284,9 @@ bne $14, $0, jogador_2
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-jogador_1:
+jogador_1: 
+jal toca_jogador_sorteado
+
 la $19, Jogadores
 la $9, jogador1
 lui $8, 0x1001
@@ -316,6 +322,7 @@ j loop_jogador1
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 jogador_2:
+jal toca_jogador_sorteado
 
 la $19, Jogadores
 addi $19, $19, 4
@@ -1161,7 +1168,7 @@ syscall
 jr $31
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------
-toca_empate: #tempo é 2 segundos = 2000 ms, falta testar!
+toca_empate: #tempo é 2 segundos = 2000 ms
 addi $6, $0, 40 #CORDAS
 addi $7, $0, 127 #volume 
 
@@ -1201,17 +1208,17 @@ addi $7, $0, 127 #volume
 
 #MI
 addi $4, $0, 64 #nota
-addi $5, $0,   #duração
+addi $5, $0, 200  #duração
 addi $2, $0, 31 #som
 syscall 
 
-addi $4, $0, #duração
+addi $4, $0, 200 #duração
 addi $2, $0, 32 #pausa
 syscall
 
 #FÁ
 addi $4, $0, 65 #nota
-addi $5, $0,   #duração
+addi $5, $0, 200  #duração
 addi $2, $0, 31 #som
 syscall 
 
@@ -1221,25 +1228,25 @@ syscall
 
 #SOL 3 VEZES
 addi $4, $0, 67 #nota
-addi $5, $0,   #duração
+addi $5, $0, 200  #duração
 addi $2, $0, 31 #som
 syscall 
 
-addi $4, $0, #duração
+addi $4, $0, 200 #duração
 addi $2, $0, 32 #pausa
 syscall
 
 addi $4, $0, 67 #nota
-addi $5, $0,   #duração
+addi $5, $0, 200 #duração
 addi $2, $0, 31 #som
 syscall 
 
-addi $4, $0, #duração
+addi $4, $0, 200#duração
 addi $2, $0, 32 #pausa
 syscall
 
 addi $4, $0, 67 #nota
-addi $5, $0,   #duração
+addi $5, $0, 400 #duração
 addi $2, $0, 31 #som
 syscall 
 
@@ -1265,25 +1272,96 @@ jr $31
     
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 toca_sorteio:
-addi $6, $0, 112 #BATERIA
+addi $6, $0, 112 #BATERIA, Não tem notas, seriam tipos de bateria para executar
 addi $7, $0, 127 #volume
 
-#
-addi $4, $0,  #nota
-addi $5, $0,   #duração
+
+addi $4, $0, 36 #nota
+addi $5, $0, 200  #duração
 addi $2, $0, 31 #som
 syscall 
 
-addi $4, $0, #duração
+addi $4, $0, 50 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 42 #nota
+addi $5, $0, 150  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 50 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 42 #nota
+addi $5, $0, 150  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 50 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 42 #nota
+addi $5, $0, 150  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 50 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 38 #nota
+addi $5, $0, 200  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 50 #duração
 addi $2, $0, 32 #pausa
 syscall
 
 jr $31
 
+#-----------------------------------------------------------------------------------------------------------------------------------------------------
+toca_jogador_sorteado:
+addi $6, $0, 112 #BATERIA, Não tem notas, seriam tipos de bateria para executar
+addi $7, $0, 127 #volume
+
+addi $4, $0, 49 #nota
+addi $5, $0, 200  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 50 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 38 #nota
+addi $5, $0, 150  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 50 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+addi $4, $0, 36 #nota
+addi $5, $0, 150  #duração
+addi $2, $0, 31 #som
+syscall 
+
+addi $4, $0, 50 #duração
+addi $2, $0, 32 #pausa
+syscall
+
+jr $31
+
+
 #------------------------------------------------------------------------------------------------------------------------------------------------------
 toca_inicial: #o cenario dura 4 segundos - 4000 ms
-addi $6, $0, 0 #PIANO
-addi $7, $0, 127
+    addi $6, $0, 0   #PIANO
+    addi $7, $0, 127
 
     # DÓ
     addi $4, $0, 72   # Nota
@@ -1293,7 +1371,7 @@ addi $7, $0, 127
 
     # Pausa após DÓ
     addi $5, $0, 150  # Duração da pausa
-    addi $2, $0, 32   # Tipo: pausa
+    addi $2, $0, 32
     syscall
 
     # RÉ
@@ -1335,12 +1413,13 @@ addi $7, $0, 127
     addi $2, $0, 31
     syscall
 
-    # Pausa final
-    addi $5, $0, 150
+    # Pausa final 
+    addi $5, $0, 100
     addi $2, $0, 32
     syscall
  
     jr $31
+
 
 
 # <---------------------------------------------------------------------------------------------------------------------------------->
