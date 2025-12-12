@@ -283,8 +283,38 @@ andi $14, $15, 1
 bne $14, $0, jogador_2
 
 # --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-qual_opcao: #falta colocar! farei os calculos em breve
+qual_opcao: 
+#colocarei a musica depois quando ver a funcionalidade da opção pra ver melhor
 
+# largura 80
+addi $15, $0, 80        
+
+# total de pixels 2560
+addi $10, $0, 2560      
+
+add $14, $0, $0          
+add $11, $0, $0          
+
+loop_mudou_opcao:
+    beq $11, $10, fim   
+
+    lw  $12, 0($9)      
+    sw  $12, 0($8)      
+
+    addi $9, $9, 4       
+    addi $8, $8, 4       
+
+    addi $14, $14, 1     
+    addi $11, $11, 1    
+
+    beq $14, $15, pula_linha_opcao  # terminou coluna?
+
+    j loop_mudou_opcao
+
+pula_linha_opcao:
+    add  $14, $0, $0     # zera coluna
+    addi $8, $8, 192     # pulo para próxima linha (48 pixels)
+    j loop_mudou_opcao
 
 
 #--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1409,66 +1439,202 @@ jr $31
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------
-toca_inicial: #o cenario dura 4 segundos - 4000 ms
-    addi $6, $0, 0   #PIANO
-    addi $7, $0, 127
+toca_inicial: #preciso ver se posso deixar esse tempo ou preciso colocar 1000 em cada, e também preciso testar, vendo esse Lá no final
 
-    # DÓ
-    addi $4, $0, 72   # Nota
-    addi $5, $0, 600  # Duração da nota
-    addi $2, $0, 31   # Tipo: som
-    syscall
+addi $6, $0, 0      # PIANO
+addi $7, $0, 120    # volume
 
-    # Pausa após DÓ
-    addi $5, $0, 150  # Duração da pausa
-    addi $2, $0, 32
-    syscall
-
-    # RÉ
-    addi $4, $0, 62
-    addi $5, $0, 600
+# ===== LÁ =====
+    addi $4, $0, 69     # nota LÁ
+    addi $5, $0, 4000
     addi $2, $0, 31
     syscall
-
-    # Pausa após RÉ
-    addi $5, $0, 150
+    addi $4, $0, 4000   # pausa
     addi $2, $0, 32
     syscall
 
-    # MI
-    addi $4, $0, 64
-    addi $5, $0, 600
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
     addi $2, $0, 31
     syscall
-
-    # Pausa após MI
-    addi $5, $0, 150
+    addi $4, $0, 4000
     addi $2, $0, 32
     syscall
 
-    # FÁ
-    addi $4, $0, 65
-    addi $5, $0, 600
+# ===== LÁ =====
+    addi $4, $0, 69     # nota LÁ
+    addi $5, $0, 4000
     addi $2, $0, 31
     syscall
-
-    # Pausa após FÁ
-    addi $5, $0, 150
+    addi $4, $0, 4000
     addi $2, $0, 32
     syscall
 
-    # SOL (última nota, mais longa)
-    addi $4, $0, 67
-    addi $5, $0, 900
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
     addi $2, $0, 31
     syscall
-
-    # Pausa final 
-    addi $5, $0, 900
+    addi $4, $0, 4000
     addi $2, $0, 32
     syscall
- 
+
+# ===== SI =====
+    addi $4, $0, 71     # nota SI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== SI =====
+    addi $4, $0, 71     # nota SI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== DÓ =====
+    addi $4, $0, 72     # nota DÓ
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== DÓ =====
+    addi $4, $0, 72     # nota DÓ
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== RÉ =====
+    addi $4, $0, 74     # nota RÉ
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== RÉ =====
+    addi $4, $0, 74     # nota RÉ
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== RÉ =====
+    addi $4, $0, 74     # nota RÉ
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== MI =====
+    addi $4, $0, 64     # nota MI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== DÓ =====
+    addi $4, $0, 72     # nota DÓ
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== SI =====
+    addi $4, $0, 71     # nota SI
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
+# ===== LÁ =====
+    addi $4, $0, 69     # nota LÁ
+    addi $5, $0, 4000
+    addi $2, $0, 31
+    syscall
+    addi $4, $0, 4000
+    addi $2, $0, 32
+    syscall
+
     jr $31
+
 # <---------------------------------------------------------------------------------------------------------------------------------->
 
 tocar_trilha_sonora:
