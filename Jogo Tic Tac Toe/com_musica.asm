@@ -1218,21 +1218,21 @@ toca_durante_jogo:
 
 # ===== MI (64) =====
     addi $4, $0, 64     # nota MI
-    addi $5, $0, 2000   # duração longa
+    addi $5, $0, 1000   # duração longa
     addi $2, $0, 31
     syscall
 
-    addi $4, $0, 2000 # pausa leve
+    addi $4, $0, 1000 # pausa leve
     addi $2, $0, 32
     syscall
 
 # ===== RÉ (74) =====
     addi $4, $0, 74     # nota RE
-    addi $5, $0, 2000   # duração longa
+    addi $5, $0, 1000   # duração longa
     addi $2, $0, 31
     syscall
 
-    addi $4, $0, 2000   # pausa leve
+    addi $4, $0, 1000  # pausa leve
     addi $2, $0, 32
     syscall
 
