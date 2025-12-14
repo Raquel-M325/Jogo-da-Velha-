@@ -1779,24 +1779,16 @@ addi $7, $0, 120    # volume
     addi $4, $0, 700
     addi $2, $0, 32
     syscall
-
+    
 # ===== RÉ =====
     addi $4, $0, 74     # nota RÉ
     addi $5, $0, 700
     addi $2, $0, 31
     syscall
-    addi $4, $0, 600
+    addi $4, $0, 700
     addi $2, $0, 32
     syscall
 
-# ===== MI =====
-    addi $4, $0, 64     # nota MI
-    addi $5, $0, 700
-    addi $2, $0, 31
-    syscall
-    addi $4, $0, 600
-    addi $2, $0, 32
-    syscall
 
 # ===== DÓ =====
     addi $4, $0, 72     # nota DÓ
